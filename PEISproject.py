@@ -8,9 +8,9 @@ input_pin = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(input_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-account_sid = 'AC3dc9d2fe169c0346833576e2d39de09c'
+account_sid = 'Insert YOUR Twilio Account SID'
 
-token = 'aabad8eda0431c484de3b76240d50de2' #hide this one
+token = 'Insert YOUR Twilio API Token'
 
 client = Client(account_sid, token)
 
@@ -25,15 +25,15 @@ def check_sensor():
         if sensor_state == GPIO.HIGH:
             print('Sensor is NOT blocked (GPIO HIGH)')
             if previous_state == GPIO.LOW: 
-                print("State changed: unblocked.")
+                print("Clear")
                 time.sleep(2)
         else:
             print('Sensor is blocked (GPIO LOW)')
             if previous_state != GPIO.LOW: 
-                print("State changed: blocked. Sending notification...")
+                print("Tripped          Sending notification...")
                 message = client.messages.create(
                     from_='whatsapp:+14155238886',
-                    to='whatsapp:+18197022276',
+                    to='whatsapp:+{Insert Your Phone Number in format: 11234567890 -> Country Code, Area Code, Phone Number}',
                     body='Motion Detected'
                 )
                 print(f"Alert dispatched: {message.sid}")
