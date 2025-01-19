@@ -8,11 +8,11 @@ input_pin = 17
 GPIO.setmode(GPIO.BCM)
 GPIO.setup(input_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
-account_sid = 'Insert YOUR Twilio Account SID'
+account_sid = 'Insert your own Twilio Account SID'
 
-token = 'Insert YOUR Twilio API Token'
+apiToken = 'Insert your own Twilio API Token'
 
-client = Client(account_sid, token)
+client = Client(account_sid, apiToken)
 
 
 previous_state = None
